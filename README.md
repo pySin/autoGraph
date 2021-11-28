@@ -12,3 +12,7 @@ The data used should be mostly numeric and comparable.
 ## Technologies used
 Python(mysql.connector, matplotlib, re)
 MySQL Workbench
+
+## Setup
+1. Install Python(install Matplotlib library as well) and MySQL.
+2. In the Python script connect MySQL to Python with mysql.connector.

@@ -15,4 +15,4 @@ MySQL Workbench
 
 ## Setup
 1. Install Python(install Matplotlib library as well) and MySQL.
-2. In the Python script connect MySQL to Python with mysql.connector.
+2. In the script connect MySQL to Python with mysql.connector.

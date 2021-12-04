@@ -5,7 +5,7 @@ import math
 
 
 class GetResults:
-    def query_1(self): # name of the table, name of the column, number of bins wanted.
+    def query_1(self): # path of the table, name of the column, number of bins wanted.
         query = '''
         SET @sixth = ROUND((((SELECT MAX(LifeExpectancy) FROM world.country) 
 			                 - (SELECT MIN(LifeExpectancy) FROM world.country))/6), 2); 

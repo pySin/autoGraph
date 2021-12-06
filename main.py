@@ -4,16 +4,30 @@ import re
 import math
 
 
-class GetResults:
-    def query_1(self): # path of the table, name of the column, number of bins wanted.
+# Create a class for the functions that query MySQL and retreive results.
+class QuerySQL:
+
+    def __init__(self, table_path, column_name, bin_number):
+        self.table_path = table_path
+        self.column_name = column_name
+        self.bin_number = bin_number
+
+    def min_max_range(self):
+
         query = '''
-        SET @sixth = ROUND((((SELECT MAX(LifeExpectancy) FROM world.country) 
-			                 - (SELECT MIN(LifeExpectancy) FROM world.country))/6), 2); 
-        SELECT @sixth;
-        SELECT COUNT(LifeExpectancy) FROM world.country
-        WHERE LifeExpectancy BETWEEN (SELECT MIN(LifeExpectancy) + @sixth*0 FROM world.country) AND
-							         (SELECT MIN(LifeExpectancy) + @sixth*2 FROM world.country);
-        '''
+        SELECT MIN(%s) AS MIN, MAX(%s) AS MAX FROM %s;
+        ''' % (self.column_name, self.column_name, self.table_path)
+
+        conn = mysql.connector.connect(host='localhost', user='root',
+                                       password='dance')  # MySQL connection.
+        cursor = conn.cursor()
+        cursor.execute(query)
+        min_max = cursor.fetchall()
+        cursor.close()
+        conn.commit()
+
+        print(min_max)
+        return min_max
 
 
 def call_functions():

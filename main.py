@@ -28,6 +28,19 @@ class QuerySQL:
 
         print(min_max)
         return min_max
+    
+    # Calculate the bin size for the column we chose and the number of bins. Make a list with all the bin ranges.
+    def calculate_bins(self, min_value, max_value):
+        values_range = max_value - min_value
+        bin_size = round(values_range / self.bin_number, 2)
+
+        bins_all = []
+
+        for n_of_bins in range(self.bin_number):
+            bins_all.append([min_value, min_value + bin_size])
+            min_value = min_value + bin_size
+
+        return bins_all
 
 
 def call_functions():

@@ -41,6 +41,27 @@ class QuerySQL:
             min_value = min_value + bin_size
 
         return bins_all
+    
+    
+    # Get the frequency results for a range bin from a column. Example: How many countries have life expectancy between 61 and 70 years.
+    def query_bin(self, single_range):
+
+        query = '''
+        SELECT COUNT(%s) AS 'column' FROM %s
+        WHERE %s BETWEEN %s AND %s;
+                ''' % (self.column_name, self.table_path, self.column_name, single_range[0], single_range[1])
+
+        conn = mysql.connector.connect(host='localhost', user='root',
+                                       password='dance')  # MySQL connection.
+        cursor = conn.cursor()
+        cursor.execute(query)
+        bins_life_e = cursor.fetchall()
+        cursor.close()
+        conn.commit()
+
+        # print(bins_life_e[0][0])
+        return bins_life_e[0][0]
+
 
 
 def call_functions():

@@ -63,6 +63,13 @@ class QuerySQL:
         return bins_life_e[0][0]
 
 
+# Plot the results of the SQL querying. Create a bar graph with the frequencies for each bin of the range of the column. 
+class PlotResults:
+
+    def __init__(self, array_1, array_2):
+        self.array_1 = array_1
+        self.array_2 = array_2
+
 
 def call_functions():
     pass

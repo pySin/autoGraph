@@ -70,6 +70,18 @@ class PlotResults:
         self.array_1 = array_1
         self.array_2 = array_2
 
+        
+# Now we have both lists ready for a normal Matplotlib plotting. 'array_1' are the graph labels and 'array_2' are the values.
+class PlotResults:
+
+    def __init__(self, array_1, array_2):
+        self.array_1 = array_1
+        self.array_2 = array_2
+
+    def plot_s(self):
+        plt.bar(self.array_1, self.array_2)
+        plt.show()
+
 
 def call_functions():
     pass

@@ -83,5 +83,6 @@ class PlotResults:
         plt.show()
 
 
-def call_functions():
-    pass
+def call_functions(table_path, column_name, bin_number):
+    query_sql = QuerySQL(table_path, column_name, bin_number)
+

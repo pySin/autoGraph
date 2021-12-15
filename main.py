@@ -83,6 +83,7 @@ class PlotResults:
         plt.show()
 
 
+# Call the functions in their proper order so the auto-analysis and the graphics appear correctly. 
 def call_functions(table_path, column_name, bin_number):
     query_sql = QuerySQL(table_path, column_name, bin_number)
 

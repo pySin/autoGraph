@@ -86,4 +86,9 @@ class PlotResults:
 # Call the functions in their proper order so the auto-analysis and the graphics appear correctly. 
 def call_functions(table_path, column_name, bin_number):
     query_sql = QuerySQL(table_path, column_name, bin_number)
-
+       
+    min_max = query_sql.min_max_range()
+    min_column = min_max[0][0]
+    max_column = min_max[0][1]
+    values_range = max_column - min_column
+    bins = query_sql.calculate_bins(min_column, max_column)
